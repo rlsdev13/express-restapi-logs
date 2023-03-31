@@ -11,6 +11,7 @@ const routes = {
     logs : '/api/logs',
     apps : '/api/apps',
     user : '/api/user',
+    auth : '/api/auth'
 }
 
 app.use(logger('dev'));
@@ -23,5 +24,6 @@ app.use(routes.main, require('./routes/main.routes'));
 app.use(routes.logs, require('./routes/log.routes'));
 app.use(routes.apps, require('./routes/application.routes'));
 app.use(routes.user, require('./routes/user.routes'));
+app.use(routes.auth, require('./routes/auth.routes'));
 
 module.exports = app;
