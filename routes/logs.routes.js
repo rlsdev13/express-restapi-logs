@@ -1,13 +1,13 @@
 'use strict';
-
 const router = require('express').Router();
-
 const controller = require('../controllers/logs.controller');
+const Validator = require('../middleware/validator');
+const { create, update } = require('../validators/log.validator');
 
 router.get(`/`, controller.all);
 router.get('/:id', controller.getById);
-router.post(`/`, controller.create);
-router. put('/:id', controller.update);
+router.post(`/`, Validator(create), controller.create);
+router. put('/:id', Validator(update), controller.update);
 router.delete('/:id', controller.delete);
 
 module.exports = router;
