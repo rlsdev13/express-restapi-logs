@@ -1,5 +1,5 @@
 'use strinct';
-const Logs = require('../schemas/logs.schema');
+const Logs = require('../schemas/log.schema');
 
 class LogsController {
 

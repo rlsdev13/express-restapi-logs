@@ -1,6 +1,6 @@
 'use strict';
 const router = require('express').Router();
-const controller = require('../controllers/logs.controller');
+const controller = require('../controllers/log.controller');
 const Validator = require('../middleware/validator');
 const { create, update } = require('../validators/log.validator');
 

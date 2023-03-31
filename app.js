@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes.main, require('./routes/main.routes'));
-app.use(routes.logs, require('./routes/logs.routes'));
+app.use(routes.logs, require('./routes/log.routes'));
 app.use(routes.apps, require('./routes/application.routes'));
 
 module.exports = app;

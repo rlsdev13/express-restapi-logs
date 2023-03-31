@@ -1,5 +1,5 @@
 'use strinct';
-const Application = require('../schemas/aplications.schema');
+const Application = require('../schemas/aplication.schema');
 
 class ApplicationController {
 
