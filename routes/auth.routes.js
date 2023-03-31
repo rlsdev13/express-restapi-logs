@@ -1,9 +1,9 @@
 'use strict';
 const router = require('express').Router();
 const controller = require('../controllers/auth.controller');
-const Validator = require('../middleware/validator');
+const ValidateJoi = require('../middleware/joiValidator.middleware');
 const { login } = require('../validators/auth.validator');
 
-router.post(`/login`, Validator(login), controller.login);
+router.post(`/login`, ValidateJoi(login), controller.login);
 
 module.exports = router;
