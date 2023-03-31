@@ -27,7 +27,7 @@ class LogsController {
 		}
 	}
 
-	async getByID(req, res, next){
+	async getById(req, res, next){
 		const { id } = req.params;
 
 		try{

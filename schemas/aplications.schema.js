@@ -15,4 +15,4 @@ const applicationSchema = new Schema({
     timestamps: true, //createdAt-updatedAt
 });
 
-module.exports = model('Application', aplicationSchema);
+module.exports = model('Application', applicationSchema);
