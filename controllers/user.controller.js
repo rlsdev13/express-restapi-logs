@@ -1,27 +1,27 @@
 'use strinct';
-const Application = require('../schemas/aplication.schema');
+const User = require('../schemas/user.schema');
 
-class ApplicationController {
+class UserController {
 
     async all(req, res, next){
         const { limit = 5, offset = 0 } = req.query;
         const query = { deleted : false };
 
         try{
-            const [total, apps] = await Promise.all([
-                Application.countDocuments(query),
-                Application.find(query)
+            const [total, users] = await Promise.all([
+                User.countDocuments(query),
+                User.find(query)
                            .skip(+offset)
                            .limit(+limit)
             ]);
     
             return res.json({
                 total,
-                apps
+                users
             });
         }catch (error) {
 			return res.status(400).json({
-				msg : "Error getting the applications"
+				msg : "Error getting the users"
 			});
 		}
     }
@@ -30,12 +30,12 @@ class ApplicationController {
 		const { id } = req.params;
 
 		try{
-			const app = await Application.findById(id);
-			return res.json(app);
+			const user = await User.findById(id);
+			return res.json(user);
 
 		}catch (error) {
 			return res.status(400).json({
-				msg : "Error getting the application"
+				msg : "Error getting the user"
 			});
 		}
 
@@ -45,13 +45,13 @@ class ApplicationController {
         const data = req.body;
 
         try{
-            const app = new Application(data);
-            await app.save();
+            const user = new User(data);
+            await user.save();
 
-            return res.status(201).json(app);
+            return res.status(201).json(user);
         }catch (error) {
 			return res.status(400).json({
-				msg : "Error creating the application"
+				msg : "Error creating the user"
 			});
 		}
     }
@@ -61,12 +61,12 @@ class ApplicationController {
 		const data = req.body;
 
 		try {
-			const app = await Application.findByIdAndUpdate(id, data, { new: true });
+			const user = await User.findByIdAndUpdate(id, data, { new: true });
 			
-			return res.json(app);
+			return res.json(user);
 		} catch (error) {
 			return res.status(400).json({
-				msg : "Error updating the application"
+				msg : "Error updating the user"
 			});
 		}
 	}
@@ -75,14 +75,14 @@ class ApplicationController {
 		const { id } = req.params;
 
 		try{
-			const app = await Application.findByIdAndUpdate(id, { deleted : true }, { new : true });
-			return res.json(app);
+			const user = await User.findByIdAndUpdate(id, { deleted : true }, { new : true });
+			return res.json(user);
 		}catch (error) {
 			return res.status(400).json({
-				msg : "Error deleting the application"
+				msg : "Error deleting the user"
 			});
 		}
 	}
 }
 
-module.exports = new ApplicationController();
+module.exports = new UserController();

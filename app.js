@@ -9,7 +9,8 @@ const app = express();
 const routes = {
     main : '/api/main',
     logs : '/api/logs',
-    apps : '/api/apps'
+    apps : '/api/apps',
+    user : '/api/user',
 }
 
 app.use(logger('dev'));
@@ -21,5 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes.main, require('./routes/main.routes'));
 app.use(routes.logs, require('./routes/log.routes'));
 app.use(routes.apps, require('./routes/application.routes'));
+app.use(routes.user, require('./routes/user.routes'));
 
 module.exports = app;
